@@ -14,11 +14,12 @@ collision_sensor::~collision_sensor()
 { 
 }
  
-int collision_sensor::Init(int port, int pin) 
+int collision_sensor::Init(int port, int pin)
 {
   (void)port;
   (void)pin;
   // init sensor hardware
+  return 0;
 }
 int collision_sensor::readSensor()
 { 
