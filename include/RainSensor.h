@@ -7,6 +7,6 @@ private:
 public:
 	RainSensor();
 	void setRain(int rain);
-	void transperRainPer();
+	void transferRainPer();
 };
 
