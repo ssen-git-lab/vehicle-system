@@ -20,6 +20,11 @@ int collision_sensor::Init(int port, int pin)
   // init sensor hardware
 }
 
+void collision_sensor::setImpact(int impact)
+{
+	  this->impact = impact;
+}
+
 int collision_sensor::getData() 
 {
   return impact;
