@@ -1,29 +1,42 @@
 #pragma once
-#include "lightSensor.h"
 
-typedef enum {
-	autoMatic = 0,
-	manual
-}mode;
+#include "LightSensor.h"
 
-class lightSystem
+enum class Mode
 {
-private:
-	int mode;
+    Automatic,
+    Manual
+};
+
+class LightSystem
+{
+protected:
+    Mode mode_ = Mode::Automatic;
+    bool isOn_ = false;
+    LightSensor& sensor_;
 
 public:
-	lightSenSor sensor;
+     LightSystem(LightSensor& sensor);
+    virtual ~LightSystem() = default;
 
-	void changeMode(mode);
-	virtual void update() = 0;
+    void changeMode(Mode mode);
+    bool isOn() const;
 
+    virtual void update() = 0;
 };
 
-class headLightSystem : public lightSystem {
+class HeadLightSystem : public LightSystem
+{
+public:
+    using LightSystem::LightSystem;
 
+    void update() override;
 };
 
-class roomLightSystem : public lightSystem {
+class RoomLightSystem : public LightSystem
+{
+public:
+    using LightSystem::LightSystem;
 
+    void update() override;
 };
-
