@@ -11,6 +11,6 @@ class collision_sensor
   virtual ~collision_sensor(); 
 
   int Init(int port, int pin);
-  int getData();
+  int getData(); // 1 , 0
 };
 
