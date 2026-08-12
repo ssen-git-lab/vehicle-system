@@ -1,6 +1,9 @@
 ﻿// vehicle-system.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+// 
 //
-
+#include "airbag_actuator.h"
+#include "lightSystem.h"
+#include "wiper_system.h"
 #include <iostream>
 #include "collision_sensor.h"
 collision_sensor hcollision1;
@@ -8,6 +11,22 @@ collision_sensor hcollision1;
 int main()
 { 
     std::cout << "Hello World!\n";
+
+    RainSensor Rainsensor;
+    LightSensor lightSensor(0);
+
+
+    airbag_actuator airbag;
+    WiperSystem wiper(Rainsensor);
+    HeadLightSystem headlight(lightSensor);
+
+    while (1) {
+        airbag.Init(0 , 0);
+        airbag.Operate(0);
+
+        wiper.update();
+        headlight.update();
+    }
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
