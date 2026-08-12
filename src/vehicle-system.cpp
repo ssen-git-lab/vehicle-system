@@ -2,9 +2,11 @@
 //
 
 #include <iostream>
+#include "collision_sensor.h"
+collision_sensor hcollision1;
 
 int main()
-{
+{ 
     std::cout << "Hello World!\n";
 }
 
